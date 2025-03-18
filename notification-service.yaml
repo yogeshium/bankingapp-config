@@ -2,22 +2,45 @@ server:
   port: 8085
 
 spring:
-  application:
-    name: notification-service
 
-  devtools:
-    restart:
-      poll-interval: 2s
-      quiet-period: 1s
-
-  config:
-    import: "optional:configserver:"
+  #  devtools:
+  #    restart:
+  #      poll-interval: 2s
+  #      quiet-period: 1s
 
   cloud:
     config:
       discovery:
         enabled: true
         service-id: config-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.blueyonder.bankingapp.model
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bankingapp
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 
 management:
   endpoints:
