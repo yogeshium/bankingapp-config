@@ -2,18 +2,6 @@ server:
   port: 8083
 
 spring:
-  application:
-    name: transaction-service
-
-  config:
-    import: "optional:configserver:http://config-service:8888"
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-service
-      enabled: true
-
   datasource:
     url: jdbc:postgresql://postgres:5432/bankingapp
     username: postgres
@@ -41,22 +29,16 @@ spring:
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
     service-url:
       defaultZone: http://registry-service:8761/eureka/
   instance:
     prefer-ip-address: true
 
-logging:
-  level:
-    #    root: WARN
-    #    com.blueyonder.bankingapp: INFO
-    #    org.springframework: WARN
-    #    org.hibernate: WARN
-    org.springframework.boot.devtools: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#logging:
+#  level:
+#    org.springframework.boot.devtools: DEBUG
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
 management:
   endpoints:
