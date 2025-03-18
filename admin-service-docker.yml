@@ -1,18 +1,6 @@
 server:
   port: 8090
 
-spring:
-  application:
-    name: admin-service
-  config:
-    import: "optional:configserver:http://config-service:8888"
-
-  cloud:
-    config:
-      discovery:
-        service-id: config-service
-        enabled: true
-
 eureka:
   client:
     service-url:
@@ -35,7 +23,7 @@ management:
     health:
       show-details: always
 
-logging:
-  level:
-    de.codecentric.boot.admin: DEBUG
-    org.springframework.cloud: DEBUG
+#logging:
+#  level:
+#    de.codecentric.boot.admin: DEBUG
+#    org.springframework.cloud: DEBUG
