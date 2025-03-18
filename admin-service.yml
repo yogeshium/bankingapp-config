@@ -13,10 +13,10 @@ eureka:
 spring.boot.admin:
   discovery:
     enabled: true
-  client:
-    url: http://admin-service:8090
-    connect-timeout: 15000  # 15s
-    read-timeout: 15000
+#  client:
+#    url: http://admin-service:8090
+#    connect-timeout: 15000  # 15s
+#    read-timeout: 15000
 
 management:
   endpoints:
