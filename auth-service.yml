@@ -5,9 +5,6 @@ spring:
   application:
     name: auth-service
 
-  config:
-    import: "optional:configserver:http://config-service:8888"
-
   datasource:
     url: jdbc:postgresql://postgres:5432/bankingapp
     username: postgres
