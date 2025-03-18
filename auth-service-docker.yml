@@ -1,13 +1,6 @@
 server:
   port: 8081
 
-spring:
-  application:
-    name: auth-service
-
-  config:
-    import: "optional:configserver:http://config-service:8888"
-
   datasource:
     url: jdbc:postgresql://postgres:5432/bankingapp
     username: postgres
@@ -20,18 +13,8 @@ spring:
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-service
-      enabled: true
-
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
     service-url:
       defaultZone: http://registry-service:8761/eureka/
   instance:
