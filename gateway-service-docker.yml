@@ -1,0 +1,81 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    import: "optional:configserver:http://config-service:8888"
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
+
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/bankingapp/api/accounts/**
+          filters:
+            - StripPrefix=2
+            - name: JwtFilter
+
+        - id: transaction-service
+          uri: lb://transaction-service
+          predicates:
+            - Path=/bankingapp/api/transactions/**
+          filters:
+            - StripPrefix=2
+            - name: JwtFilter
+
+
+        - id: fund-transfer-service
+          uri: lb://fund-transfer-service
+          predicates:
+            - Path=/bankingapp/api/fundTransfers/**
+          filters:
+            - StripPrefix=2
+            - name: JwtFilter
+
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/bankingapp/api/notifications/**
+          filters:
+            - StripPrefix=2
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/bankingapp/api/auth/**
+          filters:
+            - StripPrefix=2
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registry-service:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  secret: helloeveryoneiamyogeshkumarandthisismysecretkey
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    com.blueyonder.bankingapp: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Expose all Actuator endpoints
+  endpoint:
+    health:
+      show-details: always
