@@ -2,3 +2,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://registry-service:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Enable health endpoint
+  endpoint:
+    health:
+      show-details: always
