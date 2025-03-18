@@ -1,17 +1,6 @@
 server:
   port: 8084
 spring:
-  application:
-    name: fund-transfer-service
-
-  config:
-    import: "optional:configserver:http://config-service:8888"
-
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-service
 
   kafka:
     bootstrap-servers: kafka:9092
@@ -45,15 +34,15 @@ eureka:
   instance:
     prefer-ip-address: true
 
-logging:
-  level:
-    #    root: WARN
-    #    com.blueyonder.bankingapp: INFO
-    #    org.springframework: WARN
-    #    org.hibernate: WARN
-    org.springframework.boot.devtools: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#logging:
+#  level:
+#    #    root: WARN
+#    #    com.blueyonder.bankingapp: INFO
+#    #    org.springframework: WARN
+#    #    org.hibernate: WARN
+#    org.springframework.boot.devtools: DEBUG
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
 management:
   endpoints:
