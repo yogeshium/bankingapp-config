@@ -61,6 +61,8 @@ eureka:
   instance:
     prefer-ip-address: true
 
+jwt:
+  secret: helloeveryoneiamyogeshkumarandthisismysecretkey
 
 logging:
   level:
