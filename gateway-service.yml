@@ -2,18 +2,7 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: gateway-service
-
   config:
-    import: "optional:configserver:http://config-service:8888"
-
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-service
-
     gateway:
       discovery:
         locator:
@@ -68,7 +57,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://registry-service:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
 

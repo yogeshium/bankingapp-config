@@ -3,14 +3,6 @@ server:
 
 spring:
   config:
-    import: "optional:configserver:http://config-service:8888"
-
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-service
-
     gateway:
       discovery:
         locator:
@@ -56,6 +48,12 @@ spring:
           filters:
             - StripPrefix=2
 
+
+#  devtools:
+#    restart:
+#      poll-interval: 2s
+#      quiet-period: 1s
+
 eureka:
   client:
     service-url:
@@ -63,8 +61,6 @@ eureka:
   instance:
     prefer-ip-address: true
 
-jwt:
-  secret: helloeveryoneiamyogeshkumarandthisismysecretkey
 
 logging:
   level:
