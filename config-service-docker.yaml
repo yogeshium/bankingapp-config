@@ -3,8 +3,8 @@ server:
 
 eureka:
   client:
-    service-url:
-      defaultZone: http://registry-service:8761/eureka
+#    service-url:
+#      defaultZone: http://registry-service:8761/eureka
   instance:
     prefer-ip-address: true
 
