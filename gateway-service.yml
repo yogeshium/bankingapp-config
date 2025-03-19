@@ -2,7 +2,7 @@ server:
   port: 8080
 
 spring:
-  config:
+  cloud:
     gateway:
       discovery:
         locator:
@@ -63,7 +63,7 @@ eureka:
 
 jwt:
   secret: helloeveryoneiamyogeshkumarandthisismysecretkey
-  
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
