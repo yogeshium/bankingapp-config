@@ -41,20 +41,12 @@ spring:
           filters:
             - StripPrefix=2
 
-        - id: auth-service-public
+        - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/bankingapp/api/auth/login, /bankingapp/api/auth/signup, /bankingapp/api/auth/adminlogin
+            - Path=/bankingapp/api/auth/**
           filters:
             - StripPrefix=2
-
-        - id: auth-service-secure
-          uri: lb://auth-service
-          predicates:
-            - Path=/bankingapp/api/auth/user
-          filters:
-            - StripPrefix=2
-            - name: JwtFilter
 
 
 #  devtools:
