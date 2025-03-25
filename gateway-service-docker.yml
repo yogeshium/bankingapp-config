@@ -7,7 +7,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]': # Applies to all routes
-            allowedOrigins: "http://bankingapp-ui:80" # Frontend origin
+            allowedOrigins: "http://bankingapp-ui:3000" # Frontend origin
             allowedMethods:
               - GET
               - POST
