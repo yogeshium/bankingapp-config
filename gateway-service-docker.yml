@@ -10,6 +10,7 @@ spring:
             allowedOrigins:
               - "http://bankingapp-ui:3000" # Frontend origin
               - "http://localhost:3000"
+              - "http://20.40.40.224:3000"
             allowedMethods:
               - GET
               - POST
